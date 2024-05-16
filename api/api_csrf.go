@@ -15,7 +15,7 @@ import (
 
 	"github.com/expgo/net/osutil"
 	"github.com/expgo/net/rand"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 const maxCsrfTokens = 25

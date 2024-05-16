@@ -17,7 +17,7 @@ import (
 	"github.com/expgo/net/api/auto"
 	"github.com/expgo/net/assets"
 	"github.com/expgo/net/config"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 const themePrefix = "theme-assets/"

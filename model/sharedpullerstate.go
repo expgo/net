@@ -15,7 +15,7 @@ import (
 	"github.com/expgo/net/fs"
 	"github.com/expgo/net/osutil"
 	"github.com/expgo/net/protocol"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 // A sharedPullerState is kept for each file that is being synced and is kept

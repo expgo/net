@@ -17,7 +17,7 @@ import (
 	"github.com/expgo/net/config"
 	"github.com/expgo/net/events"
 	"github.com/expgo/net/rand"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 	ldap "github.com/go-ldap/ldap/v3"
 )
 

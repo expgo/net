@@ -14,7 +14,7 @@ import (
 	"github.com/expgo/net/config"
 	"github.com/expgo/net/events"
 	"github.com/expgo/net/protocol"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 type ProgressEmitter struct {

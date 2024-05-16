@@ -31,8 +31,8 @@ import (
 	"github.com/expgo/net/osutil"
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/util"
+	"github.com/expgo/sync"
 
 	// Registers NAT service providers
 	_ "github.com/expgo/net/pmp"

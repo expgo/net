@@ -23,8 +23,8 @@ import (
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/sha256"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/util"
+	"github.com/expgo/sync"
 	"github.com/greatroar/blobloom"
 	"github.com/thejerf/suture/v4"
 )

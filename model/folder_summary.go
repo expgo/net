@@ -22,7 +22,7 @@ import (
 	"github.com/expgo/net/events"
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 const maxDurationSinceLastEventReq = time.Minute

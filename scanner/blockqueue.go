@@ -12,7 +12,7 @@ import (
 
 	"github.com/expgo/net/fs"
 	"github.com/expgo/net/protocol"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 // HashFile hashes the files and returns a list of blocks representing the file.

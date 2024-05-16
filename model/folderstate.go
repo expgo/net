@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/expgo/net/events"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 type folderState int

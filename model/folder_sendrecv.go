@@ -27,10 +27,10 @@ import (
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/scanner"
 	"github.com/expgo/net/sha256"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/util"
 	"github.com/expgo/net/versioner"
 	"github.com/expgo/net/weakhash"
+	"github.com/expgo/sync"
 )
 
 var (

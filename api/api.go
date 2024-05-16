@@ -52,10 +52,10 @@ import (
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/rand"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/tlsutil"
 	"github.com/expgo/net/upgrade"
 	"github.com/expgo/net/ur"
+	"github.com/expgo/sync"
 )
 
 const (

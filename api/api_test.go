@@ -40,10 +40,10 @@ import (
 	modelmocks "github.com/expgo/net/model/mocks"
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/tlsutil"
 	"github.com/expgo/net/ur"
 	"github.com/expgo/net/util"
+	"github.com/expgo/sync"
 	"github.com/thejerf/suture/v4"
 )
 

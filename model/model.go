@@ -39,10 +39,10 @@ import (
 	"github.com/expgo/net/scanner"
 	"github.com/expgo/net/stats"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/ur/contract"
 	"github.com/expgo/net/util"
 	"github.com/expgo/net/versioner"
+	"github.com/expgo/sync"
 )
 
 type service interface {

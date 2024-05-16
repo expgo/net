@@ -13,7 +13,7 @@ import (
 
 	"github.com/expgo/net/build"
 	"github.com/expgo/net/fs"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 // Try to keep this entire operation atomic-like. We shouldn't be doing this

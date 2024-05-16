@@ -11,7 +11,7 @@ import (
 	"sort"
 
 	"github.com/expgo/net/db/backend"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 // A smallIndex is an in memory bidirectional []byte to uint32 map. It gives

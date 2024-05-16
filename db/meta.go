@@ -16,7 +16,7 @@ import (
 	"github.com/expgo/net/db/backend"
 	"github.com/expgo/net/events"
 	"github.com/expgo/net/protocol"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 var errMetaInconsistent = errors.New("inconsistent counts detected")

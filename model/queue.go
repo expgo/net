@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/expgo/net/rand"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 type jobQueue struct {

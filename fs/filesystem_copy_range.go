@@ -9,7 +9,7 @@ package fs
 import (
 	"syscall"
 
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 var (

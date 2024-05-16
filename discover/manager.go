@@ -23,8 +23,8 @@ import (
 	"github.com/expgo/net/events"
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/util"
+	"github.com/expgo/sync"
 )
 
 // The Manager aggregates results from multiple Finders. Each Finder has

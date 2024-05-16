@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/expgo/net/logger"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 
 	"github.com/thejerf/suture/v4"
 )

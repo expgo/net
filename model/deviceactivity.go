@@ -8,7 +8,7 @@ package model
 
 import (
 	"github.com/expgo/net/protocol"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 // deviceActivity tracks the number of outstanding requests per device and can

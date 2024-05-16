@@ -11,7 +11,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 type MappingChangeSubscriber func()

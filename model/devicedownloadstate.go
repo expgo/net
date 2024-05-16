@@ -8,7 +8,7 @@ package model
 
 import (
 	"github.com/expgo/net/protocol"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 // deviceFolderFileDownloadState holds current download state of a file that

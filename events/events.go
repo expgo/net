@@ -20,7 +20,7 @@ import (
 
 	"github.com/thejerf/suture/v4"
 
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 type EventType int64

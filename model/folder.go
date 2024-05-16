@@ -27,10 +27,10 @@ import (
 	"github.com/expgo/net/scanner"
 	"github.com/expgo/net/stats"
 	"github.com/expgo/net/svcutil"
-	"github.com/expgo/net/sync"
 	"github.com/expgo/net/util"
 	"github.com/expgo/net/versioner"
 	"github.com/expgo/net/watchaggregator"
+	"github.com/expgo/sync"
 )
 
 // Arbitrary limit that triggers a warning on kqueue systems

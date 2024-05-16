@@ -27,7 +27,7 @@ import (
 	"github.com/expgo/net/osutil"
 	"github.com/expgo/net/protocol"
 	"github.com/expgo/net/scanner"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 var blocks = []protocol.BlockInfo{

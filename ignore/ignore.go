@@ -22,7 +22,7 @@ import (
 	"github.com/expgo/net/fs"
 	"github.com/expgo/net/osutil"
 	"github.com/expgo/net/sha256"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 const (

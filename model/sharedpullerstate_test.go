@@ -11,7 +11,7 @@ import (
 	"testing"
 
 	"github.com/expgo/net/fs"
-	"github.com/expgo/net/sync"
+	"github.com/expgo/sync"
 )
 
 // Test creating temporary file inside read-only directory
