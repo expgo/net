@@ -38,7 +38,7 @@ func main() {
 	vanity.ForEachFile(files, vanity.TurnOnMarshalerAll)
 	vanity.ForEachFile(files, vanity.TurnOnUnmarshalerAll)
 	vanity.ForEachEnumInFiles(files, HandleCustomEnumExtensions)
-	vanity.ForEachFile(files, SetPackagePrefix("github.com/syncthing/syncthing"))
+	vanity.ForEachFile(files, SetPackagePrefix("github.com/expgo/net"))
 	vanity.ForEachFile(files, HandleFile)
 	vanity.ForEachFieldInFilesExcludingExtensions(files, TurnOffNullableForMessages)
 
