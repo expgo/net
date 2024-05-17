@@ -79,166 +79,6 @@ type archiveFile struct {
 	perm os.FileMode
 }
 
-var targets = map[string]target{
-	"all": {
-		// Only valid for the "build" and "install" commands as it lacks all
-		// the archive creation stuff. buildPkgs gets filled out in init()
-		tags: []string{"purego"},
-	},
-	"syncthing": {
-		// The default target for "build", "install", "tar", "zip", "deb", etc.
-		name:        "syncthing",
-		debname:     "syncthing",
-		debdeps:     []string{"libc6", "procps"},
-		description: "Open Source Continuous File Synchronization",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/syncthing"},
-		binaryName:  "syncthing", // .exe will be added automatically for Windows builds
-		archiveFiles: []archiveFile{
-			{src: "{{binary}}", dst: "{{binary}}", perm: 0755},
-			{src: "README.md", dst: "README.txt", perm: 0644},
-			{src: "LICENSE", dst: "LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "AUTHORS.txt", perm: 0644},
-			// All files from etc/ and extra/ added automatically in init().
-		},
-		systemdService: "syncthing@*.service",
-		installationFiles: []archiveFile{
-			{src: "{{binary}}", dst: "deb/usr/bin/{{binary}}", perm: 0755},
-			{src: "README.md", dst: "deb/usr/share/doc/syncthing/README.txt", perm: 0644},
-			{src: "LICENSE", dst: "deb/usr/share/doc/syncthing/LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "deb/usr/share/doc/syncthing/AUTHORS.txt", perm: 0644},
-			{src: "man/syncthing.1", dst: "deb/usr/share/man/man1/syncthing.1", perm: 0644},
-			{src: "man/syncthing-config.5", dst: "deb/usr/share/man/man5/syncthing-config.5", perm: 0644},
-			{src: "man/syncthing-stignore.5", dst: "deb/usr/share/man/man5/syncthing-stignore.5", perm: 0644},
-			{src: "man/syncthing-device-ids.7", dst: "deb/usr/share/man/man7/syncthing-device-ids.7", perm: 0644},
-			{src: "man/syncthing-event-api.7", dst: "deb/usr/share/man/man7/syncthing-event-api.7", perm: 0644},
-			{src: "man/syncthing-faq.7", dst: "deb/usr/share/man/man7/syncthing-faq.7", perm: 0644},
-			{src: "man/syncthing-networking.7", dst: "deb/usr/share/man/man7/syncthing-networking.7", perm: 0644},
-			{src: "man/syncthing-rest-api.7", dst: "deb/usr/share/man/man7/syncthing-rest-api.7", perm: 0644},
-			{src: "man/syncthing-security.7", dst: "deb/usr/share/man/man7/syncthing-security.7", perm: 0644},
-			{src: "man/syncthing-versioning.7", dst: "deb/usr/share/man/man7/syncthing-versioning.7", perm: 0644},
-			{src: "etc/linux-systemd/system/syncthing@.service", dst: "deb/lib/systemd/system/syncthing@.service", perm: 0644},
-			{src: "etc/linux-systemd/system/syncthing-resume.service", dst: "deb/lib/systemd/system/syncthing-resume.service", perm: 0644},
-			{src: "etc/linux-systemd/user/syncthing.service", dst: "deb/usr/lib/systemd/user/syncthing.service", perm: 0644},
-			{src: "etc/linux-sysctl/30-syncthing.conf", dst: "deb/usr/lib/sysctl.d/30-syncthing.conf", perm: 0644},
-			{src: "etc/firewall-ufw/syncthing", dst: "deb/etc/ufw/applications.d/syncthing", perm: 0644},
-			{src: "etc/linux-desktop/syncthing-start.desktop", dst: "deb/usr/share/applications/syncthing-start.desktop", perm: 0644},
-			{src: "etc/linux-desktop/syncthing-ui.desktop", dst: "deb/usr/share/applications/syncthing-ui.desktop", perm: 0644},
-			{src: "assets/logo-32.png", dst: "deb/usr/share/icons/hicolor/32x32/apps/syncthing.png", perm: 0644},
-			{src: "assets/logo-64.png", dst: "deb/usr/share/icons/hicolor/64x64/apps/syncthing.png", perm: 0644},
-			{src: "assets/logo-128.png", dst: "deb/usr/share/icons/hicolor/128x128/apps/syncthing.png", perm: 0644},
-			{src: "assets/logo-256.png", dst: "deb/usr/share/icons/hicolor/256x256/apps/syncthing.png", perm: 0644},
-			{src: "assets/logo-512.png", dst: "deb/usr/share/icons/hicolor/512x512/apps/syncthing.png", perm: 0644},
-			{src: "assets/logo-only.svg", dst: "deb/usr/share/icons/hicolor/scalable/apps/syncthing.svg", perm: 0644},
-		},
-	},
-	"stdiscosrv": {
-		name:        "stdiscosrv",
-		debname:     "syncthing-discosrv",
-		debdeps:     []string{"libc6"},
-		debpre:      "cmd/stdiscosrv/scripts/preinst",
-		description: "Syncthing Discovery Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/stdiscosrv"},
-		binaryName:  "stdiscosrv", // .exe will be added automatically for Windows builds
-		archiveFiles: []archiveFile{
-			{src: "{{binary}}", dst: "{{binary}}", perm: 0755},
-			{src: "cmd/stdiscosrv/README.md", dst: "README.txt", perm: 0644},
-			{src: "LICENSE", dst: "LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "AUTHORS.txt", perm: 0644},
-		},
-		systemdService: "stdiscosrv.service",
-		installationFiles: []archiveFile{
-			{src: "{{binary}}", dst: "deb/usr/bin/{{binary}}", perm: 0755},
-			{src: "cmd/stdiscosrv/README.md", dst: "deb/usr/share/doc/syncthing-discosrv/README.txt", perm: 0644},
-			{src: "LICENSE", dst: "deb/usr/share/doc/syncthing-discosrv/LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "deb/usr/share/doc/syncthing-discosrv/AUTHORS.txt", perm: 0644},
-			{src: "man/stdiscosrv.1", dst: "deb/usr/share/man/man1/stdiscosrv.1", perm: 0644},
-			{src: "cmd/stdiscosrv/etc/linux-systemd/stdiscosrv.service", dst: "deb/lib/systemd/system/stdiscosrv.service", perm: 0644},
-			{src: "cmd/stdiscosrv/etc/linux-systemd/default", dst: "deb/etc/default/syncthing-discosrv", perm: 0644},
-			{src: "cmd/stdiscosrv/etc/firewall-ufw/stdiscosrv", dst: "deb/etc/ufw/applications.d/stdiscosrv", perm: 0644},
-		},
-		tags: []string{"purego"},
-	},
-	"strelaysrv": {
-		name:        "strelaysrv",
-		debname:     "syncthing-relaysrv",
-		debdeps:     []string{"libc6"},
-		debpre:      "cmd/strelaysrv/scripts/preinst",
-		description: "Syncthing Relay Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/strelaysrv"},
-		binaryName:  "strelaysrv", // .exe will be added automatically for Windows builds
-		archiveFiles: []archiveFile{
-			{src: "{{binary}}", dst: "{{binary}}", perm: 0755},
-			{src: "cmd/strelaysrv/README.md", dst: "README.txt", perm: 0644},
-			{src: "cmd/strelaysrv/LICENSE", dst: "LICENSE.txt", perm: 0644},
-			{src: "LICENSE", dst: "LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "AUTHORS.txt", perm: 0644},
-		},
-		systemdService: "strelaysrv.service",
-		installationFiles: []archiveFile{
-			{src: "{{binary}}", dst: "deb/usr/bin/{{binary}}", perm: 0755},
-			{src: "cmd/strelaysrv/README.md", dst: "deb/usr/share/doc/syncthing-relaysrv/README.txt", perm: 0644},
-			{src: "cmd/strelaysrv/LICENSE", dst: "deb/usr/share/doc/syncthing-relaysrv/LICENSE.txt", perm: 0644},
-			{src: "LICENSE", dst: "deb/usr/share/doc/syncthing-relaysrv/LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "deb/usr/share/doc/syncthing-relaysrv/AUTHORS.txt", perm: 0644},
-			{src: "man/strelaysrv.1", dst: "deb/usr/share/man/man1/strelaysrv.1", perm: 0644},
-			{src: "cmd/strelaysrv/etc/linux-systemd/strelaysrv.service", dst: "deb/lib/systemd/system/strelaysrv.service", perm: 0644},
-			{src: "cmd/strelaysrv/etc/linux-systemd/default", dst: "deb/etc/default/syncthing-relaysrv", perm: 0644},
-			{src: "cmd/strelaysrv/etc/firewall-ufw/strelaysrv", dst: "deb/etc/ufw/applications.d/strelaysrv", perm: 0644},
-		},
-	},
-	"strelaypoolsrv": {
-		name:        "strelaypoolsrv",
-		debname:     "syncthing-relaypoolsrv",
-		debdeps:     []string{"libc6"},
-		description: "Syncthing Relay Pool Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/strelaypoolsrv"},
-		binaryName:  "strelaypoolsrv", // .exe will be added automatically for Windows builds
-		archiveFiles: []archiveFile{
-			{src: "{{binary}}", dst: "{{binary}}", perm: 0755},
-			{src: "cmd/strelaypoolsrv/README.md", dst: "README.txt", perm: 0644},
-			{src: "cmd/strelaypoolsrv/LICENSE", dst: "LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "AUTHORS.txt", perm: 0644},
-		},
-		installationFiles: []archiveFile{
-			{src: "{{binary}}", dst: "deb/usr/bin/{{binary}}", perm: 0755},
-			{src: "cmd/strelaypoolsrv/README.md", dst: "deb/usr/share/doc/syncthing-relaypoolsrv/README.txt", perm: 0644},
-			{src: "cmd/strelaypoolsrv/LICENSE", dst: "deb/usr/share/doc/syncthing-relaypoolsrv/LICENSE.txt", perm: 0644},
-			{src: "AUTHORS", dst: "deb/usr/share/doc/syncthing-relaypoolsrv/AUTHORS.txt", perm: 0644},
-		},
-	},
-}
-
-func initTargets() {
-	all := targets["all"]
-	pkgs, _ := filepath.Glob("cmd/*")
-	for _, pkg := range pkgs {
-		pkg = filepath.Base(pkg)
-		if strings.HasPrefix(pkg, ".") {
-			// ignore dotfiles
-			continue
-		}
-		if noupgrade && pkg == "stupgrades" {
-			continue
-		}
-		all.buildPkgs = append(all.buildPkgs, fmt.Sprintf("github.com/syncthing/syncthing/cmd/%s", pkg))
-	}
-	targets["all"] = all
-
-	// The "syncthing" target includes a few more files found in the "etc"
-	// and "extra" dirs.
-	syncthingPkg := targets["syncthing"]
-	for _, file := range listFiles("etc") {
-		syncthingPkg.archiveFiles = append(syncthingPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0644})
-	}
-	for _, file := range listFiles("extra") {
-		syncthingPkg.archiveFiles = append(syncthingPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0644})
-	}
-	for _, file := range listFiles("extra") {
-		syncthingPkg.installationFiles = append(syncthingPkg.installationFiles, archiveFile{src: file, dst: "deb/usr/share/doc/syncthing/" + filepath.Base(file), perm: 0644})
-	}
-	targets["syncthing"] = syncthingPkg
-}
-
 func main() {
 	log.SetFlags(0)
 
@@ -251,30 +91,16 @@ func main() {
 		}()
 	}
 
-	initTargets()
-
 	// Invoking build.go with no parameters at all builds everything (incrementally),
 	// which is what you want for maximum error checking during development.
 	if flag.NArg() == 0 {
-		runCommand("install", targets["all"])
+		runCommand("proto")
 	} else {
-		// with any command given but not a target, the target is
-		// "syncthing". So "go run build.go install" is "go run build.go install
-		// syncthing" etc.
-		targetName := "syncthing"
-		if flag.NArg() > 1 {
-			targetName = flag.Arg(1)
-		}
-		target, ok := targets[targetName]
-		if !ok {
-			log.Fatalln("Unknown target", target)
-		}
-
-		runCommand(flag.Arg(0), target)
+		runCommand(flag.Arg(0))
 	}
 }
 
-func runCommand(cmd string, target target) {
+func runCommand(cmd string) {
 	var tags []string
 	if noupgrade {
 		tags = []string{"noupgrade"}
@@ -282,13 +108,6 @@ func runCommand(cmd string, target target) {
 	tags = append(tags, strings.Fields(extraTags)...)
 
 	switch cmd {
-	case "install":
-		install(target, tags)
-		metalintShort()
-
-	case "build":
-		build(target, tags)
-
 	case "test":
 		test(strings.Fields(extraTags), "github.com/syncthing/syncthing/lib/...", "github.com/syncthing/syncthing/cmd/...")
 
@@ -315,15 +134,6 @@ func runCommand(cmd string, target target) {
 
 	case "transifex":
 		transifex()
-
-	case "tar":
-		buildTar(target, tags)
-
-	case "zip":
-		buildZip(target, tags)
-
-	case "deb":
-		buildDeb(target)
 
 	case "vet":
 		metalintShort()
@@ -444,74 +254,6 @@ func benchArgs() []string {
 		return []string{"-bench", "."}
 	}
 	return []string{"-bench", benchRun}
-}
-
-func install(target target, tags []string) {
-	if (target.name == "syncthing" || target.name == "") && !withNextGenGUI {
-		log.Println("Notice: Next generation GUI will not be built; see --with-next-gen-gui.")
-	}
-
-	lazyRebuildAssets()
-
-	tags = append(target.tags, tags...)
-
-	cwd, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-	os.Setenv("GOBIN", filepath.Join(cwd, "bin"))
-
-	setBuildEnvVars()
-
-	// On Windows generate a special file which the Go compiler will
-	// automatically use when generating Windows binaries to set things like
-	// the file icon, version, etc.
-	if goos == "windows" {
-		sysoPath, err := shouldBuildSyso(cwd)
-		if err != nil {
-			log.Printf("Warning: Windows binaries will not have file information encoded: %v", err)
-		}
-		defer shouldCleanupSyso(sysoPath)
-	}
-
-	args := []string{"install", "-v"}
-	args = appendParameters(args, tags, target.buildPkgs...)
-	runPrint(goCmd, args...)
-}
-
-func build(target target, tags []string) {
-	if (target.name == "syncthing" || target.name == "") && !withNextGenGUI {
-		log.Println("Notice: Next generation GUI will not be built; see --with-next-gen-gui.")
-	}
-
-	lazyRebuildAssets()
-	tags = append(target.tags, tags...)
-
-	rmr(target.BinaryName())
-
-	setBuildEnvVars()
-
-	// On Windows generate a special file which the Go compiler will
-	// automatically use when generating Windows binaries to set things like
-	// the file icon, version, etc.
-	if goos == "windows" {
-		cwd, err := os.Getwd()
-		if err != nil {
-			log.Fatal(err)
-		}
-		sysoPath, err := shouldBuildSyso(cwd)
-		if err != nil {
-			log.Printf("Warning: Windows binaries will not have file information encoded: %v", err)
-		}
-		defer shouldCleanupSyso(sysoPath)
-	}
-
-	args := []string{"build", "-v"}
-	if buildOut != "" {
-		args = append(args, "-o", buildOut)
-	}
-	args = appendParameters(args, tags, target.buildPkgs...)
-	runPrint(goCmd, args...)
 }
 
 func setBuildEnvVars() {
