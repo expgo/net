@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package config;
 
-import "lib/config/tuning.proto";
-import "lib/config/size.proto";
+import "config/tuning.proto";
+import "config/size.proto";
 
 import "ext.proto";
 

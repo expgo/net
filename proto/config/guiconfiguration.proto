@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package config;
 
-import "lib/config/authmode.proto";
+import "config/authmode.proto";
 
 import "ext.proto";
 

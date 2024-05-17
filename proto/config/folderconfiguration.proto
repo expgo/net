@@ -2,14 +2,14 @@ syntax = "proto3";
 
 package config;
 
-import "lib/config/foldertype.proto";
-import "lib/config/size.proto";
-import "lib/config/pullorder.proto";
-import "lib/config/versioningconfiguration.proto";
-import "lib/config/blockpullorder.proto";
+import "config/foldertype.proto";
+import "config/size.proto";
+import "config/pullorder.proto";
+import "config/versioningconfiguration.proto";
+import "config/blockpullorder.proto";
 
-import "lib/fs/types.proto";
-import "lib/fs/copyrangemethod.proto";
+import "fs/types.proto";
+import "fs/copyrangemethod.proto";
 
 import "ext.proto";
 

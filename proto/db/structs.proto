@@ -4,7 +4,7 @@ package db;
 
 import "repos/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
-import "lib/protocol/bep.proto";
+import "protocol/bep.proto";
 import "ext.proto";
 
 message FileVersion {

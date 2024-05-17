@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package config;
 
-import "lib/config/ldaptransport.proto";
+import "config/ldaptransport.proto";
 
 import "ext.proto";
 

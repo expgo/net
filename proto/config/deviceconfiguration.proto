@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package config;
 
-import "lib/protocol/bep.proto";
-import "lib/config/observed.proto";
+import "protocol/bep.proto";
+import "config/observed.proto";
 
 import "ext.proto";
 

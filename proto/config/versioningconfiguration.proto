@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package config;
 
-import "lib/fs/types.proto";
+import "fs/types.proto";
 
 import "ext.proto";
 
